@@ -1,1 +1,3 @@
-python pip install --upgrade pip
+pip
+flask
+pymysql
