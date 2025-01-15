@@ -1,1 +1,1 @@
---upgrade pip
+python pip install --upgrade pip
