@@ -21,13 +21,15 @@ def send_data():
         valor = float(data['valor']) 
         
 
-   
+        print("por guardar")
         with db.cursor() as cursor:
             sql = "INSERT INTO readings (value) VALUES (%s, %s)"
             cursor.execute(sql, (valor))
         db.commit()
+        print("guardado")
         return jsonify({"message": "Data inserted successfully!"}), 200
     except Exception as e:
+        print("error",e)
         return jsonify({"error": str(e)}), 500
 
 if __name__ == '__main__':
