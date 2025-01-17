@@ -16,7 +16,9 @@ def send_data():
     # Obtener datos del ESP32
     try:
         data = request.json
-        value = data.get("valor")
+        print("Datos recibidos:", data)  # Depuración
+        tipo = data['tipo']
+        valor = float(data['valor']) 
         
 
    
