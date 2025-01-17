@@ -16,7 +16,7 @@ def send_data():
     # Obtener datos del ESP32
     data = request.json
 
-    value = data.get('valor')
+    value = float(data.get('valor')).format(:.2f)
 
     try:
         with db.cursor() as cursor:
