@@ -17,7 +17,7 @@ def send_data():
     try:
         data = request.json
         print("Datos recibidos:", data)  # Depuración
-        tipo = data['tipo']
+        
         valor = float(data['valor']) 
         
 
