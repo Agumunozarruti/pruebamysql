@@ -11,13 +11,13 @@ db = pymysql.connect(
     database="bmqqy9bjero3zbgiec1g"
 )
 
-@app.route('/send-data', methods=['POST'])
+@app.route('/insertar', methods=['POST'])
 def send_data():
     # Obtener datos del ESP32
     try:
         data = request.json
         value = data.get("valor")
-        value = "{:.2f}".format(value)
+        
 
    
         with db.cursor() as cursor:
