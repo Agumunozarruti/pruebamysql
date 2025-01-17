@@ -23,7 +23,7 @@ def send_data():
         
         # Insertar en la base de datos
         with db.cursor() as cursor:
-            sql = "INSERT INTO mediciones (value) VALUES (%s)"
+            sql = "INSERT INTO mediciones (valor) VALUES (%s)"
             cursor.execute(sql, (valor,))  # Nota la coma para pasar un tuple
         db.commit()
         
