@@ -13,24 +13,25 @@ db = pymysql.connect(
 
 @app.route('/insertar', methods=['POST'])
 def send_data():
-    # Obtener datos del ESP32
     try:
+        # Obtener datos del ESP32
         data = request.json
         print("Datos recibidos:", data)  # Depuración
         
-        valor = float(data['valor']) 
+        valor = float(data['valor'])  # Convertir el valor recibido a flotante
+        print("Por guardar:", valor)
         
-
-        print("por guardar")
+        # Insertar en la base de datos
         with db.cursor() as cursor:
-            sql = "INSERT INTO readings (value) VALUES (%s, %s)"
-            cursor.execute(sql, (valor))
+            sql = "INSERT INTO readings (value) VALUES (%s)"
+            cursor.execute(sql, (valor,))  # Nota la coma para pasar un tuple
         db.commit()
-        print("guardado")
+        
+        print("Guardado")
         return jsonify({"message": "Data inserted successfully!"}), 200
     except Exception as e:
-        print("error",e)
+        print("Error:", e)
         return jsonify({"error": str(e)}), 500
 
 if __name__ == '__main__':
-    app.run(debug=True,host='0.0.0.0', port=5000)
+    app.run(debug=True, host='0.0.0.0', port=5000)
