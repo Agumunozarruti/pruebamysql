@@ -17,7 +17,7 @@ def send_data():
     try:
         data = request.json
 
-        value = float(data.get('valor')).format(:.2f)
+        value = float(data.get('valor')).format(":.2f")
 
    
         with db.cursor() as cursor:
