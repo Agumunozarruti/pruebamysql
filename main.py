@@ -18,13 +18,17 @@ def send_data():
         data = request.json
         print("Datos recibidos:", data)  # Depuración
         
-        valor = float(data['valor'])  # Convertir el valor recibido a flotante
-        print("Por guardar:", valor)
+        temp = float(data['temperatura'])  # Convertir el valor recibido a flotante
+        hum = float(data['humedad'])  # Convertir el valor recibido a flotante
+
+        pre = float(data['presion'])  # Convertir el valor recibido a flotante
+
+        
         
         # Insertar en la base de datos
         with db.cursor() as cursor:
-            sql = "INSERT INTO mediciones (valor) VALUES (%s)"
-            cursor.execute(sql, (valor,))  # Nota la coma para pasar un tuple
+            sql = "INSERT INTO mediciones_amp (temperatura, humedad, presion) VALUES (%s, %s ,%s)"
+            cursor.execute(sql, (temp, hum, pre))  # Nota la coma para pasar un tuple
         db.commit()
         
         print("Guardado")
